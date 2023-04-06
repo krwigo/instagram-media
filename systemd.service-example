@@ -1,0 +1,17 @@
+# cp ./systemd.service /etc/systemd/system/instagram.service
+# systemctl daemon-reload
+# systemctl enable instagram
+# systemctl start instagram
+# systemctl restart instagram
+# systemctl status instagram
+# journalctl -fu instagram
+
+[Service]
+WorkingDirectory=/srv/instagram
+EnvironmentFile=/srv/instagram/.env
+ExecStart=/usr/bin/npm run start
+Restart=always
+SyslogIdentifier=instagram
+
+[Install]
+WantedBy=multi-user.target
